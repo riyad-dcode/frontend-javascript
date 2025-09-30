@@ -42,7 +42,10 @@ interface DirectorInterface {
     if (typeof salary === "number" && salary < 500) {
       return new Teacher();
     }
+
+    if (salary < 500)
     return new Director();
+
   }
   
   // Expected results
@@ -52,9 +55,10 @@ interface DirectorInterface {
 
   
   // Type guard: check if employee is a Director
-function isDirector(employee: Director | Teacher): employee is Director {
+export function isDirector(employee: Director | Teacher): employee is Director {
     return employee instanceof Director;
   }
+
   
   // executeWork function
   function executeWork(employee: Director | Teacher): string {
@@ -74,7 +78,7 @@ function isDirector(employee: Director | Teacher): employee is Director {
   type Subjects = "Math" | "History";
 
 // Function teachClass
-function teachClass(todayClass: Subjects): string {
+function teachClass(todayClass:Subjects): string {
   if (todayClass === "Math") {
     return "Teaching Math";
   } else {
