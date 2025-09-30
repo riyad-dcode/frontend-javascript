@@ -38,7 +38,7 @@ interfacefunction printTeacher( {
 
   
 
-const printTeacher: printTeacherFunction = ({ firstName, lastName }) => {
+const printTeacher: printTeacherFunction = { firstName, lastName } => {
     return `${firstName}. ${lastName}`;
   };
 
