@@ -1,20 +1,15 @@
 interface Teacher {
-    firstName: string;
-    lastName: string;
+    readonly firstName: string;
+    readonly lastName: string;
     fullTimeEmployee: boolean;
-    yearsOfExperience: number;
-    contract: boolean;
+    yearsOfExperience?: number;
     location: string;
+    [key: string]: any;
   }
 
 
-interface Directors {
-    firstName: string;
-    lastName: string;
-    fullTimeEmployee: boolean;
-    yearsOfExperience: number;
+interface Directors extends Teacher {
     numberOfReports: number;
-    location: string;
   }
 
 
@@ -22,29 +17,29 @@ const teacher3: Teacher = {
     firstName: 'John',
     lastName: 'Doe',
     fullTimeEmployee: false,
-    yearsOfExperience: 2,
     location: 'London',
-    contract: false,
+    contract: false, // extra property allowed
   };
 
 
-  const director1: Directors = {
+const director1: Directors = {
     firstName: 'John',
     lastName: 'Doe',
-    yearsOfExperience: 4,
     location: 'London',
     fullTimeEmployee: true,
     numberOfReports: 17,
   };
 
 
-  interface printTeacherFunction {
+interfacefunction printTeacher( {
     (firstName: string, lastName: string): string;
-  }
+  } 
+)
+
   
 
-  const printTeacher: printTeacherFunction = (firstName, lastName) => {
-    return `${firstName.charAt(0)}. ${lastName}`;
+const printTeacher: printTeacherFunction = ({ firstName, lastName }) => {
+    return `${firstName}. ${lastName}`;
   };
 
   // Interface describing the class instance
@@ -67,6 +62,8 @@ interface StudentClassInterface {
       this.firstName = firstName;
       this.lastName = lastName;
     }
+
+    class StudentClass {
   
     workOnHomework(): string {
       return "Currently working";
@@ -77,4 +74,3 @@ interface StudentClassInterface {
     }
   }
 
-  
